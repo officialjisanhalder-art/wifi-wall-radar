@@ -48,8 +48,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 20px;
-  gap: 20px;
+  padding: 16px;
+  gap: 16px;
   position: relative;
   z-index: 2;
 }
@@ -60,7 +60,8 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid var(--panel-border);
-  padding-bottom: 16px;
+  padding-bottom: 12px;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -70,15 +71,15 @@ body {
 }
 
 .logo h1 {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--neon-green);
   text-shadow: 0 0 10px var(--neon-green-glow);
 }
 
 .pulse-node {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background-color: var(--neon-green);
   border-radius: 50%;
   box-shadow: 0 0 8px var(--neon-green);
@@ -108,7 +109,7 @@ body {
 }
 
 .status-text {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--neon-green);
 }
 
@@ -117,8 +118,8 @@ body {
   border: 1px solid var(--neon-green);
   color: var(--neon-green);
   text-decoration: none;
-  font-size: 0.82rem;
-  padding: 6px 14px;
+  font-size: 0.78rem;
+  padding: 5px 12px;
   border-radius: 4px;
   transition: all 0.2s ease;
 }
@@ -132,34 +133,39 @@ body {
 .main-layout {
   display: flex;
   flex: 1;
-  gap: 20px;
+  gap: 16px;
   overflow: hidden;
+  min-height: 0; /* allows children to shrink below content height */
 }
 
 .panel {
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: 8px;
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  overflow-y: auto;
+  min-height: 0;
 }
 
 .panel-title {
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--neon-green);
   border-left: 3px solid var(--neon-green);
   padding-left: 8px;
+  flex-shrink: 0;
 }
 
 /* Left Panel Controls */
 .controls-panel {
-  width: 320px;
+  width: 300px;
+  flex-shrink: 0;
 }
 
 .control-group {
@@ -384,15 +390,17 @@ input[type="range"] {
 
 /* Right Panel Analysis */
 .analysis-panel {
-  width: 360px;
+  width: 320px;
+  flex-shrink: 0;
 }
 
 .chart-container {
-  height: 180px;
+  height: 140px;
   border: 1px solid var(--panel-border);
   background-color: #040508;
   border-radius: 4px;
   position: relative;
+  flex-shrink: 0;
 }
 
 #chartCanvas {
@@ -405,11 +413,12 @@ input[type="range"] {
   background: #040508;
   border: 1px solid var(--panel-border);
   border-radius: 4px;
-  padding: 12px;
+  padding: 10px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
+  min-height: 100px;
 }
 
 .log-entry {
