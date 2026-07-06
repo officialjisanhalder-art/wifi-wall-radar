@@ -77,10 +77,11 @@ Logic Engine      →  Multipath attenuation physics, Doppler phase shifts, coor
 
 ```
 wifi-wall-radar/
-├── index.html     # Sci-fi oscilloscope cockpit layout view
-├── style.css      # Hardware green terminal grids and neon sweep keyframes
-├── script.js      # Doppler physics formulas, subcarriers wave drawer, coordinates tracker
-└── README.md      # This file
+├── index.html             # Sci-fi oscilloscope cockpit layout view
+├── style.css              # Hardware green terminal grids and neon sweep keyframes
+├── script.js              # Doppler physics formulas, subcarriers wave drawer, coordinates tracker
+├── real_csi_visualizer.py # REAL python script parsing complex IQ subcarrier packets
+└── README.md              # This file
 ```
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a68c7c10b.gif" width="100%">
