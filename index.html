@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WiSight — WiFi CSI Through-Wall Radar Simulator</title>
+  <meta name="description" content="An educational simulator demonstrating how RF signals and Channel State Information (CSI) are used to detect movement through solid walls."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Sci-fi grid background -->
+  <div class="grid-overlay"></div>
+
+  <div class="dashboard">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="pulse-node"></span>
+        <h1>WiSight // RF-CSI RADAR</h1>
+      </div>
+      <div class="system-status">
+        <span class="status-indicator online"></span>
+        <span class="status-text">SYSTEM: SCANNING</span>
+        <a href="https://github.com/officialjisanhalder-art/wifi-wall-radar" target="_blank" class="github-badge">⭐ GitHub</a>
+      </div>
+    </header>
+
+    <div class="main-layout">
+      <!-- Left Panel: Controls & Telemetry -->
+      <aside class="panel controls-panel">
+        <h2 class="panel-title">📡 Signal Parameters</h2>
+        
+        <div class="control-group">
+          <label for="freqSelect">Carrier Frequency</label>
+          <select id="freqSelect">
+            <option value="2.4">2.4 GHz (Longer range, lower resolution)</option>
+            <option value="5.0" selected>5.0 GHz (Shorter range, higher resolution)</option>
+            <option value="60.0">60 GHz mmWave (Ultra resolution, short range)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="wallMaterial">Wall Material & Thickness</label>
+          <select id="wallMaterial">
+            <option value="drywall" selected>Drywall (10cm) - Weak attenuation</option>
+            <option value="brick">Brick Wall (20cm) - Medium attenuation</option>
+            <option value="concrete">Reinforced Concrete (30cm) - High attenuation</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label>TX Antenna Configuration</label>
+          <div class="mimo-grid">
+            <button class="mimo-btn active">1x1 SISO</button>
+            <button class="mimo-btn">2x2 MIMO</button>
+            <button class="mimo-btn">3x3 MIMO</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label>CSI Resolution</label>
+          <div class="slider-container">
+            <input type="range" id="csiRes" min="30" max="114" value="56"/>
+            <span class="value-display" id="csiResVal">56 subcarriers</span>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" id="scanBtn">Stop Sweep</button>
+          <button class="btn btn-secondary" id="resetBtn">Recalibrate CSI</button>
+        </div>
+
+        <div class="telemetry">
+          <h3 class="telemetry-title">📊 Signal Telemetry</h3>
+          <div class="telemetry-row">
+            <span>RSSI Power Level:</span>
+            <span id="rssiVal">-58 dBm</span>
+          </div>
+          <div class="telemetry-row">
+            <span>Phase Coherence:</span>
+            <span id="phaseVal">94.2%</span>
+          </div>
+          <div class="telemetry-row">
+            <span>Multipath Noise:</span>
+            <span id="noiseVal">Medium</span>
+          </div>
+          <div class="telemetry-row">
+            <span>Doppler Frequency Shift:</span>
+            <span id="dopplerVal">0.14 Hz</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center Panel: Radar Sweep Area -->
+      <section class="panel radar-panel">
+        <h2 class="panel-title">👁️ Spatial Imaging Sweeper</h2>
+        
+        <div class="radar-container">
+          <!-- Canvas for drawing the radar beam and target -->
+          <canvas id="radarCanvas"></canvas>
+          <div class="overlay-labels">
+            <span class="label-top">WALL BOUNDARY</span>
+            <span class="label-bottom">TX ANTENNA SOURCE (0,0)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Panel: CSI Phase Chart & Terminal Logs -->
+      <aside class="panel analysis-panel">
+        <h2 class="panel-title">〽️ CSI Amplitude & Phase</h2>
+        <div class="chart-container">
+          <canvas id="chartCanvas"></canvas>
+        </div>
+
+        <h2 class="panel-title">📋 Raw Diagnostics Log</h2>
+        <div class="logs-container" id="logsContainer">
+          <!-- logs injected here -->
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
