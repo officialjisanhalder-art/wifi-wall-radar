@@ -212,6 +212,48 @@ select:focus {
   background: var(--neon-green-glow);
 }
 
+.room-tools {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.tool-btn {
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  color: var(--text-muted);
+  padding: 8px 4px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tool-btn:hover, .tool-btn.active {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  background: var(--neon-green-glow);
+}
+
+.tool-btn.delete {
+  border-color: rgba(255, 71, 87, 0.3);
+  color: #ff4757;
+}
+
+.tool-btn.delete:hover {
+  background: rgba(255, 71, 87, 0.1);
+  border-color: #ff4757;
+}
+
+.tool-tip {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
 .slider-container {
   display: flex;
   flex-direction: column;

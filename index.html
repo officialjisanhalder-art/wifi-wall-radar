@@ -51,12 +51,22 @@
         </div>
 
         <div class="control-group">
-          <label>TX Antenna Configuration</label>
+          <label>MIMO Antenna Layout</label>
           <div class="mimo-grid">
             <button class="mimo-btn active">1x1 SISO</button>
             <button class="mimo-btn">2x2 MIMO</button>
             <button class="mimo-btn">3x3 MIMO</button>
           </div>
+        </div>
+
+        <div class="control-group">
+          <label>🛠️ Room Map Creator</label>
+          <div class="room-tools">
+            <button class="tool-btn active" id="drawWallBtn" data-tool="wall">🧱 Draw Wall</button>
+            <button class="tool-btn" id="drawPillarBtn" data-tool="pillar">🪨 Place Pillar</button>
+            <button class="tool-btn delete" id="clearRoomBtn">🗑️ Clear Room</button>
+          </div>
+          <p class="tool-tip">Click and drag inside the sweeper grid below to draw custom walls and obstacles!</p>
         </div>
 
         <div class="control-group">
